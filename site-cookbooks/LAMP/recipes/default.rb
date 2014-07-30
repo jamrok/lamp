@@ -56,6 +56,6 @@ remote_directory "/root/lamp" do
 end
 
 execute "ansible" do
-  command "`which ansible-playbook` -i /root/lamp/hosts /root/lamp/site.yml -e '{'mysql': {'mysql_password': #{node[:mysql][:server_root_password]}}, 'phpmyadmin': {'htuser': #{node[:phpmyadmin][:user]}, 'htpass':#{node[:phpmyadmin][:pass]}}}'"
+  command '`which ansible-playbook` -i /root/lamp/hosts /root/lamp/site.yml -e {"mysql": {"mysql_password": #{node[:mysql][:server_root_password]}}, "phpmyadmin": {"htuser": #{node[:phpmyadmin][:user]}, "htpass":#{node[:phpmyadmin][:pass]}}}'
   action :run
 end
