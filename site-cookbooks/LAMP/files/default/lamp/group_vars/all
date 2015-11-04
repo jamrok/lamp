@@ -56,7 +56,7 @@
 
 
 ### MYSQL VARS
-'mysql_password': "{{ lookup('password', '/tmp/mysql_' + ansible_hostname + '-' + ansible_date_time.time + ' chars=ascii_letters,digits') }}"
+'mysql_password': "{{ lookup('password', '/tmp/' + ansible_hostname + '-' + ansible_date_time.time + '/mysql chars=ascii_letters,digits') }}"
 
 'datadir': '/var/lib/mysql'
 'log_slow': '/var/lib/mysql/slow-log'
@@ -78,13 +78,13 @@
 
 ### PHPMYADMIN VARS
 'htuser': 'serverinfo'
-'htpass': "{{ lookup('password', '/tmp/htpass_' + ansible_hostname + '-' + ansible_date_time.time + ' chars=ascii_letters,digits') }}"
-'blowfish_pass': "{{ lookup('password', '/tmp/blowfish_' + ansible_hostname + '-' + ansible_date_time.time + ' chars=ascii_letters,digits') }}"
+'htpass': "{{ lookup('password', '/tmp/' + ansible_hostname + '-' + ansible_date_time.time + '/htpass chars=ascii_letters,digits') }}"
+'blowfish_pass': "{{ lookup('password', '/tmp/' + ansible_hostname + '-' + ansible_date_time.time + '/blowfish chars=ascii_letters,digits') }}"
 
 
 ### HOLLAND VARS
 'holland_version': '1.0.10-2'
 'holland_dir': '/var/lib/mysqlbackup'
-'holland_password': "{{ lookup('password', '/tmp/holland_' + ansible_hostname + '-' + ansible_date_time.time) }}"
+'holland_password': "{{ lookup('password', '/tmp/' + ansible_hostname + '-' + ansible_date_time.time) + '/holland chars=ascii_letters,digits'}}"
 'notification_plan': 'npManaged'
 ### Notification plan will need to be specified and changed once infrastructure gets monitoring
